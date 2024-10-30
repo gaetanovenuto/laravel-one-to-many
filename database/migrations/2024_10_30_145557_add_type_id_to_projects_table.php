@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->foreignId('type_id')
                     ->nullable()
-                    ->after('published')
+                    ->after('completed')
                     ->constrained()
                     ->onUpdate('cascade')
                     ->onDelete('set null');

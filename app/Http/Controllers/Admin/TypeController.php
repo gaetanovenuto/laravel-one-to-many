@@ -43,7 +43,7 @@ class TypeController extends Controller
 
         $type = Type::create($data);
 
-        return redirect()->route('admin.types.show', ['Type' => $type->id]);
+        return redirect()->route('admin.types.show', ['type' => $type->id]);
     }
 
     /**
@@ -59,7 +59,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        return view('admin.types.edit', compact('Type'));
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -77,7 +77,7 @@ class TypeController extends Controller
 
         $type->update($data);
 
-        return redirect()->route('admin.types.show', ['Type' =>$type->id]);
+        return redirect()->route('admin.types.show', ['type' =>$type->id]);
     }
 
     /**

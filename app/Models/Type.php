@@ -10,14 +10,15 @@ class Type extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'slug'
     ];
 
     /*
         Relationships
     */
-    public function types()
+    public function projects()
     {
-        return $this->hasMany(Type::class);
+        return $this->hasMany(Project::class);
     }
 }

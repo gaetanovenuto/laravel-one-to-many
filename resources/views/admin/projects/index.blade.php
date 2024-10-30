@@ -32,6 +32,9 @@
             Completed
         </th>
         <th scope="col">
+            Tipologia allegata:
+        </th>
+        <th scope="col">
 
         </th>
         <th scope="col">
@@ -70,6 +73,15 @@
                 {{ $project->completed ? 'Yes' : 'No' }}
             </td>
             <td>
+                @if (isset($project->type))
+                    <a href="{{ route('admin.types.show', ['type' => $project->type_id]) }}">
+                        {{ $project->type->name }}
+                    </a>
+                @else
+                    -
+                @endif
+            </td>
+            <td>
 
                 <a class="btn btn-primary" href="{{ route('admin.projects.show', $project->id) }}">
                     Visualizza
@@ -81,9 +93,10 @@
                 </a>
             </td>
             <td>
-                <form action="{{ route('admin.projects.destroy', $project->id) }}" class="d-inline-block" method="post" onsubmit="return confirm('Are you sure?');">
+                <form action="{{ route('admin.projects.destroy', $project->id) }}" class="d-inline-block" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?');">
                     @csrf
                     @method('DELETE')
+
                     <button type="submit" class="btn btn-danger">
                         Elimina
                     </button>
