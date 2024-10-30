@@ -18,10 +18,10 @@ class ProjectSeeder extends Seeder
         //
         Project::truncate();
         
-        for($i=0; $i<10;$i++) {
+        for($i=0; $i<25; $i++) {
 
-            $projectName = fake()->sentence(); // Nome progetto
-            $sluggedName = str()->slug($projectName); // Slug per nome
+            $projectName = fake()->sentence();
+            $sluggedName = str()->slug($projectName);
 
             Project::create([
                 'name' => $projectName,
