@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\Technology;
 use Illuminate\Http\Request;
+
+// Models
+use App\Models\Technology;
 
 
 class TechnologyController extends Controller

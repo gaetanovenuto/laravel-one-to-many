@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Project;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+// Models
+use App\Models\Project;
+
 
 class ProjectController extends Controller
 {
@@ -12,7 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::get();
+
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -20,7 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
+
     }
 
     /**
@@ -28,7 +35,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+
+        return redirect()->route('admin.projects.show', ['project' => $project->id]);
+
     }
 
     /**
@@ -36,7 +46,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
+
     }
 
     /**
@@ -44,7 +55,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('projects'));
+
     }
 
     /**
@@ -52,7 +64,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        dd($request->all());
+
+        return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }
 
     /**
@@ -60,6 +74,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
 }
