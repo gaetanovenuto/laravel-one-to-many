@@ -26,6 +26,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.technologies.index') }}">Tecnologie</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.projects.index') }}">Progetti</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.types.index') }}">Tipologie</a>
+                            </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

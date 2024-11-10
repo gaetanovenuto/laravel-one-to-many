@@ -1,25 +1,19 @@
 @extends('layouts.app')
 
-@section('page-title', $technology->name)
-
 @section('main-content')
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <ul class="mb-0">
-                        <li>
-                            ID: {{ $technology->id }}
-                        </li>
-                        <li>
-                            Nome: {{ $technology->name }}
-                        </li>
-                        <li>
-                            Creato il: {{ $technology->created_at->format('d/m/Y') }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <h1>Tecnologia: {{ $technology->name }}</h1>
+    <h2>Progetti che utilizzano questa tecnologia:</h2>
+        <ul>
+            @foreach ($technology->projects as $project)
+                <li>{{ $project->name }}</li>
+            @endforeach
+        </ul>
+    <a href="{{ route('admin.technologies.edit', $technology) }}" class="btn btn-warning">Modifica</a>
+    <form action="{{ route('admin.technologies.destroy', $technology) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare questa tecnologia?')">Elimina</button>
+    </form>
+</div>
 @endsection

@@ -16,12 +16,11 @@ class TechnologySeeder extends Seeder
      */
     public function run(): void
     {
-        Technology::truncate();
 
-        for($i = 0; $i < 10; $i++) {
-            Technology::create([
-                'name' => fake()->word()
-            ]);
+        $technologies = ['iOS', 'Android', 'Windows', 'Linux'];
+
+        foreach ($technologies as $tech) {
+        Technology::create(['name' => $tech]);
         }
     }
 }
